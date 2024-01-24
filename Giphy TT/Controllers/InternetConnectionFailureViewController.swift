@@ -26,7 +26,7 @@ class InternetConnectionFailureViewController: UIViewController {
         label.font = .systemFont(ofSize: 22, weight: .bold)
         label.text = "Ooops..."
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
     
@@ -36,7 +36,7 @@ class InternetConnectionFailureViewController: UIViewController {
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.text = "No Internet Connection"
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = .label
         return label
     }()
     

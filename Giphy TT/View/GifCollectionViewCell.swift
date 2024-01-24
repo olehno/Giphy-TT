@@ -18,16 +18,13 @@ class GifCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    private let loadingIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .medium)
-        indicator.hidesWhenStopped = true
-        return indicator
-    }()
+    private let loadingIndicator = LoadingIndicator()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(gifImageView)
         contentView.addSubview(loadingIndicator)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -44,9 +41,10 @@ class GifCollectionViewCell: UICollectionViewCell {
         guard let url = URL(string: url) else {
             return
         }
+        loadingIndicator.isHidden = false 
         loadingIndicator.startAnimating()
         gifImageView.sd_setImage(with: url) { [weak self] (_, _, _, _) in
-            self?.loadingIndicator.stopAnimating()
+            self?.loadingIndicator.isHidden = true
         }
     }
 }

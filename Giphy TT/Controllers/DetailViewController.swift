@@ -78,6 +78,15 @@ class DetailViewController: UIViewController {
         return button
     }()
     
+    private let blurEffectView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .extraLight)  // You can choose a different blur style here
+        let effectView = UIVisualEffectView(effect: blurEffect)
+        effectView.translatesAutoresizingMaskIntoConstraints = false
+        return effectView
+    }()
+    
+    private let errorView = ErrorMessageView()
+    
     private let spacerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -87,10 +96,6 @@ class DetailViewController: UIViewController {
     // MARK: - Override Func
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let data = UserDefaults.standard.object(forKey: "savedGifs") as? Data,
-           let decodedGifs = try? JSONDecoder().decode([Gif].self, from: data) {
-            savedGifs = decodedGifs
-        }
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.tintColor = .label
         view.addSubview(scrollView)
@@ -102,6 +107,12 @@ class DetailViewController: UIViewController {
         scrollStackViewContainer.addArrangedSubview(spacerView)
         scrollStackViewContainer.addArrangedSubview(addToFavoriteButton)
         applyConstraints()
+        if let data = UserDefaults.standard.object(forKey: "savedGifs!") as? Data,
+           let decodedGifs = try? JSONDecoder().decode([Gif].self, from: data) {
+            savedGifs = decodedGifs
+        } else {
+            showErrorView()
+        }
     }
     // MARK: - Public Func
     public func configure(with model: Gif) {
@@ -138,6 +149,16 @@ class DetailViewController: UIViewController {
     private func updateUI(isGifExistInArray: Bool) {
         addToFavoriteButton.setTitle(isGifExistInArray ? "Delete from favorite" : "Add to favorite", for: .normal)
         addToFavoriteButton.backgroundColor = isGifExistInArray ? .systemRed : .systemGreen
+    }
+    
+    
+    
+    private func showErrorView() {
+        errorView.messegeTextLabel.text = "Failed to get local data!"
+        errorView.center = view.center
+        blurEffectView.frame = self.view.bounds
+        view.addSubview(blurEffectView)
+        view.addSubview(errorView)
     }
     
     private func applyConstraints() {
