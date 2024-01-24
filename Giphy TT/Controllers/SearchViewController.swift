@@ -149,37 +149,41 @@ extension SearchViewController: UISearchResultsUpdating, UICollectionViewDelegat
     }
     
     private func performSearch(with query: String, and offset: Int) {
-        APICaller.shared.getGifs(with: query, offset: offset) { [weak self] result in
-            DispatchQueue.main.async {
+        APICaller.shared.getGifs(with: query, offset: offset)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] result in
                 switch result {
                 case .success(let gifs):
                     self?.gifsRelay.accept(gifs)
-                    self?.searchResultsCollectionView.reloadData()
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
-            }
-        }
+            })
+            .disposed(by: disposeBag)
     }
     
     private func loadMore(for query: String) {
         loadingIndicator.startAnimating()
         offset += gifsRelay.value.count
-        APICaller.shared.getGifs(with: query, offset: self.offset) { result in
-            defer {
-                DispatchQueue.main.async {
-                    self.loadingIndicator.stopAnimating()
+        
+        APICaller.shared.getGifs(with: query, offset: self.offset)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] result in
+                defer {
+                    self?.loadingIndicator.stopAnimating()
                 }
-            }
-            switch result {
-            case .success(let gifs):
-                self.gifsRelay.accept(self.gifsRelay.value + gifs)
-                DispatchQueue.main.async {
-                    self.searchResultsCollectionView.reloadData()
+                switch result {
+                case .success(let gifs):
+                    self?.gifsRelay.accept((self?.gifsRelay.value)! + gifs )
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Error while getting data:", message: String(error.localizedDescription), preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self?.present(alert, animated: true)
+                    }
                 }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+            })
+            .disposed(by: disposeBag)
     }
 }

@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RxSwift
 
 class InternetConnectionFailureViewController: UIViewController {
     //MARK: - Parameters
     private let networkMonitor = NetworkMonitor.shared
+    private let disposeBag = DisposeBag()
     // MARK: - UI Elements
     private let statusUIImageView: UIImageView = {
         let imageView = UIImageView()
@@ -60,9 +62,11 @@ class InternetConnectionFailureViewController: UIViewController {
         view.addSubview(continueButton)
         applyConstraints()
         
-        networkMonitor.didChangeHandler = { [weak self] isConnected in
-            self?.updateViewAppearance(isConnected: isConnected)
+        networkMonitor.isConnectedRelay.subscribe { [weak self] isConnected in
+                        self?.updateViewAppearance(isConnected: isConnected)
+
         }
+        .disposed(by: disposeBag)
     }
     // MARK: - Constraints
     private func applyConstraints() {

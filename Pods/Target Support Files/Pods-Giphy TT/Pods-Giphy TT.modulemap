@@ -1,0 +1,6 @@
+framework module Pods_Giphy_TT {
+  umbrella header "Pods-Giphy TT-umbrella.h"
+
+  export *
+  module * { export * }
+}

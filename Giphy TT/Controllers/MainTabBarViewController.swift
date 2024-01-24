@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxSwift
 
 class MainTabBarViewController: UITabBarController {
+    
+    private let errorView = OfflineView()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +28,24 @@ class MainTabBarViewController: UITabBarController {
         tabBar.tintColor = .label
         
         setViewControllers([vc1, vc2], animated: true)
+        configureNetworkHandling()
     }
-
-
+    
+    private func configureNetworkHandling() {
+        view.addSubview(errorView)
+        errorView.center = view.center
+        errorView.isHidden = false
+        NetworkMonitor.shared.isConnectedRelay.subscribe { isConnected in
+            DispatchQueue.main.async {
+                if isConnected {
+                    self.view.isUserInteractionEnabled = true
+                    self.errorView.isHidden = true
+                } else {
+                    self.view.isUserInteractionEnabled = false
+                    self.errorView.isHidden = false
+                }
+            }
+            
+        }.disposed(by: disposeBag)
+    }
 }

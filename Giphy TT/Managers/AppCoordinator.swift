@@ -33,21 +33,3 @@ extension FavoriteViewController: FavoriteViewControllerDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
 }
-extension NetworkMonitor: NetworkMonitorDelegate {
-    func presentInternetConnectionFailure(isConnected: Bool) {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let window = windowScene.windows.filter({ $0.isKeyWindow }).first,
-              !self.isConnected else {
-            return
-        }
-        let rootViewController = window.rootViewController
-        if let presentedVC = rootViewController?.presentedViewController, presentedVC is InternetConnectionFailureViewController {
-            return
-        }
-        let internetConnectionFailureVC = InternetConnectionFailureViewController()
-        internetConnectionFailureVC.modalPresentationStyle = .fullScreen
-        rootViewController?.present(internetConnectionFailureVC, animated: true)
-    }
-    
-    
-}
