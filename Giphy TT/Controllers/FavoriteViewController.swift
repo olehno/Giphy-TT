@@ -69,6 +69,8 @@ class FavoriteViewController: UIViewController {
         if let data = UserDefaults.standard.object(forKey: "savedGifs") as? Data,
            let decodedGifs = try? JSONDecoder().decode([Gif].self, from: data) {
             savedGifsRelay.accept(decodedGifs)
+        } else {
+            showError()
         }
     }
     
@@ -85,6 +87,14 @@ class FavoriteViewController: UIViewController {
                 self?.messageLabel.isHidden = !isEmpty
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func showError() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Ooops...", message: "Failed to get local data!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
     }
     
     private func didTapGifSetUp() {

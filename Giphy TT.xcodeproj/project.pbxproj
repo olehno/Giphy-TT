@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		305738502B4B049E002780B5 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308CF4292B49F1C000A0E450 /* DetailViewControllerTests.swift */; };
+		301771642B698ED80005EDA7 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301771632B698ED80005EDA7 /* APIManager.swift */; };
 		305738522B4B04C0002780B5 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305738512B4B04C0002780B5 /* test.swift */; };
 		307658F12B3CD7100047913A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307658F02B3CD7100047913A /* DetailViewController.swift */; };
 		308C5D2C2B3E928400DFAD21 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308C5D2B2B3E928400DFAD21 /* MainTabBarViewController.swift */; };
@@ -29,6 +29,7 @@
 		30BBB2662B36512C002B4237 /* Giphy_TTUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBB2652B36512C002B4237 /* Giphy_TTUITestsLaunchTests.swift */; };
 		30BBB2732B3666BB002B4237 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBB2722B3666BB002B4237 /* NetworkMonitor.swift */; };
 		30BBB2752B367745002B4237 /* InternetConnectionFailureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBB2742B367745002B4237 /* InternetConnectionFailureViewController.swift */; };
+		30C433832B62AF7500532A2B /* DetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C433822B62AF7500532A2B /* DetailViewTests.swift */; };
 		7DCD1E1F0BEEAD9D127B550C /* Pods_Giphy_TT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F0043D19EEEDD25080A08E /* Pods_Giphy_TT.framework */; };
 		9D838D99BA8342C9AD879973 /* Pods_Giphy_TT_Giphy_TTUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3457495C682862DD82650DEE /* Pods_Giphy_TT_Giphy_TTUITests.framework */; };
 		F18C378757E11DA917F1EE0F /* Pods_Giphy_TTTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C07BA9882784966C64FE4D7 /* Pods_Giphy_TTTests.framework */; };
@@ -81,11 +82,11 @@
 /* Begin PBXFileReference section */
 		20ACCB344A89EFFAA00B1A25 /* Pods-Giphy TT-Giphy TTUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Giphy TT-Giphy TTUITests.debug.xcconfig"; path = "Target Support Files/Pods-Giphy TT-Giphy TTUITests/Pods-Giphy TT-Giphy TTUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		25AC32EE01C90031DBE2D5AD /* Pods-Giphy TTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Giphy TTTests.release.xcconfig"; path = "Target Support Files/Pods-Giphy TTTests/Pods-Giphy TTTests.release.xcconfig"; sourceTree = "<group>"; };
+		301771632B698ED80005EDA7 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		305738512B4B04C0002780B5 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		307658F02B3CD7100047913A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		308C5D2B2B3E928400DFAD21 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		308C5D2D2B3E92C200DFAD21 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
-		308CF4292B49F1C000A0E450 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		308F09792B5DACFB00EBEA4F /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		3098F7D02B5F07D6007A222C /* OfflineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineView.swift; sourceTree = "<group>"; };
 		30A2E0F42B462250009F9D57 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 		30BBB2652B36512C002B4237 /* Giphy_TTUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Giphy_TTUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		30BBB2722B3666BB002B4237 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		30BBB2742B367745002B4237 /* InternetConnectionFailureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionFailureViewController.swift; sourceTree = "<group>"; };
+		30C433822B62AF7500532A2B /* DetailViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewTests.swift; sourceTree = "<group>"; };
 		3457495C682862DD82650DEE /* Pods_Giphy_TT_Giphy_TTUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Giphy_TT_Giphy_TTUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C07BA9882784966C64FE4D7 /* Pods_Giphy_TTTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Giphy_TTTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7450804C941E147DEF9566CC /* Pods-Giphy TT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Giphy TT.release.xcconfig"; path = "Target Support Files/Pods-Giphy TT/Pods-Giphy TT.release.xcconfig"; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			children = (
 				30BBB2592B36512C002B4237 /* Giphy_TTTests.swift */,
 				305738512B4B04C0002780B5 /* test.swift */,
+				30C433822B62AF7500532A2B /* DetailViewTests.swift */,
 			);
 			path = "Giphy TTTests";
 			sourceTree = "<group>";
@@ -210,7 +213,6 @@
 			children = (
 				30BBB2632B36512C002B4237 /* Giphy_TTUITests.swift */,
 				30BBB2652B36512C002B4237 /* Giphy_TTUITestsLaunchTests.swift */,
-				308CF4292B49F1C000A0E450 /* DetailViewControllerTests.swift */,
 			);
 			path = "Giphy TTUITests";
 			sourceTree = "<group>";
@@ -251,9 +253,10 @@
 		30BBB2792B39111E002B4237 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				30A2E0F42B462250009F9D57 /* AppCoordinator.swift */,
 				30BBB2722B3666BB002B4237 /* NetworkMonitor.swift */,
 				30A66A812B3B9961006896A1 /* APICaller.swift */,
-				30A2E0F42B462250009F9D57 /* AppCoordinator.swift */,
+				301771632B698ED80005EDA7 /* APIManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				301771642B698ED80005EDA7 /* APIManager.swift in Sources */,
 				30A66A8A2B3BA835006896A1 /* GifCollectionViewCell.swift in Sources */,
 				308C5D2C2B3E928400DFAD21 /* MainTabBarViewController.swift in Sources */,
 				30A2E0F52B462250009F9D57 /* AppCoordinator.swift in Sources */,
@@ -545,6 +549,7 @@
 			files = (
 				30BBB25A2B36512C002B4237 /* Giphy_TTTests.swift in Sources */,
 				305738522B4B04C0002780B5 /* test.swift in Sources */,
+				30C433832B62AF7500532A2B /* DetailViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,7 +559,6 @@
 			files = (
 				30BBB2662B36512C002B4237 /* Giphy_TTUITestsLaunchTests.swift in Sources */,
 				30BBB2642B36512C002B4237 /* Giphy_TTUITests.swift in Sources */,
-				305738502B4B049E002780B5 /* DetailViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

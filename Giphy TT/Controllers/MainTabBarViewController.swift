@@ -13,6 +13,13 @@ class MainTabBarViewController: UITabBarController {
     private let errorView = OfflineView()
     private let disposeBag = DisposeBag()
     
+    private let blurEffectView: UIVisualEffectView = {
+            let blurEffect = UIBlurEffect(style: .extraLight)  // You can choose a different blur style here
+            let effectView = UIVisualEffectView(effect: blurEffect)
+            effectView.translatesAutoresizingMaskIntoConstraints = false
+            return effectView
+        }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -32,17 +39,25 @@ class MainTabBarViewController: UITabBarController {
     }
     
     private func configureNetworkHandling() {
+        view.addSubview(blurEffectView)
         view.addSubview(errorView)
         errorView.center = view.center
         errorView.isHidden = false
+        blurEffectView.isHidden = false
+        blurEffectView.frame = self.view.bounds
         NetworkMonitor.shared.isConnectedRelay.subscribe { isConnected in
             DispatchQueue.main.async {
                 if isConnected {
+                    
                     self.view.isUserInteractionEnabled = true
                     self.errorView.isHidden = true
+                    self.blurEffectView.isHidden = true
+
                 } else {
                     self.view.isUserInteractionEnabled = false
                     self.errorView.isHidden = false
+                    self.blurEffectView.isHidden = false
+
                 }
             }
             

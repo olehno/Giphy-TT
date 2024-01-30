@@ -110,6 +110,15 @@ class SearchViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(messageLabelConstraint)
     }
+    
+    private var errorAlertCompletion: (Error, UIViewController) -> Void = { (error: Error, viewController: UIViewController) in
+        print(error.localizedDescription)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Error while getting data:", message: String(error.localizedDescription), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            viewController.present(alert, animated: true)
+        }
+    }
 }
 
 extension SearchViewController: UISearchResultsUpdating, UICollectionViewDelegate {
@@ -126,8 +135,6 @@ extension SearchViewController: UISearchResultsUpdating, UICollectionViewDelegat
     }
     // Is bottom of screen reached
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print("scrollViewDidEndDragging called")
-        
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         if maximumOffset - currentOffset <= 10.0 {
@@ -152,11 +159,26 @@ extension SearchViewController: UISearchResultsUpdating, UICollectionViewDelegat
         APICaller.shared.getGifs(with: query, offset: offset)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] result in
+                guard let self = self else { return }
                 switch result {
                 case .success(let gifs):
-                    self?.gifsRelay.accept(gifs)
+                    self.gifsRelay.accept(gifs)
                 case .failure(let error):
+                    
+                    self.errorAlertCompletion(error, self)
                     print(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Error while getting data:", message: String(error.localizedDescription), preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                }
+            }, onError: { error in
+                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Error while getting data:", message: String(error.localizedDescription), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true)
                 }
             })
             .disposed(by: disposeBag)
@@ -182,6 +204,13 @@ extension SearchViewController: UISearchResultsUpdating, UICollectionViewDelegat
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self?.present(alert, animated: true)
                     }
+                }
+            }, onError: { error in
+                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Error while getting data:", message: String(error.localizedDescription), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true)
                 }
             })
             .disposed(by: disposeBag)

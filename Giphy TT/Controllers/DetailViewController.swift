@@ -11,8 +11,8 @@ import SDWebImage
 class DetailViewController: UIViewController {
     // MARK: - Properties
     private var savedGifs: [Gif] = [Gif]()
-    private var gif: Gif?
-    private var isGifExistInArray: Bool {
+    public var gif: Gif?
+    public var isGifExistInArray: Bool {
         get {
             return savedGifs.contains { $0.id == self.gif?.id }
         }
@@ -87,7 +87,7 @@ class DetailViewController: UIViewController {
     // MARK: - Override Func
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let data = UserDefaults.standard.object(forKey: "savedGifs!") as? Data,
+        if let data = UserDefaults.standard.object(forKey: "savedGifs") as? Data,
            let decodedGifs = try? JSONDecoder().decode([Gif].self, from: data) {
             savedGifs = decodedGifs
         } else {

@@ -1,17 +1,17 @@
 //
-//  Giphy_TTTests.swift
+//  DetailViewTests.swift
 //  Giphy TTTests
 //
-//  Created by Artūrs Oļehno on 23/12/2023.
+//  Created by Artūrs Oļehno on 25/01/2024.
 //
 
 import XCTest
 @testable import Giphy_TT
-import RxSwift
-import RxCocoa
 
-final class Giphy_TTTests: XCTestCase {
+final class DetailViewTests: XCTestCase {
     
+    let detailVC = DetailViewController()
+
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -35,26 +35,13 @@ final class Giphy_TTTests: XCTestCase {
         }
     }
     
-    func testGetGifs() throws {
-        let query = "cats"
-        let offset = 0
-        let expectation = XCTestExpectation(description: "Get Gifs")
-        let disposeBag = DisposeBag()
+    func testIDLabel() {
+        let idLabel = detailVC.idLabel
         
-        APICaller.shared.getGifs(with: query, offset: offset)
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { result in
-                switch result {
-                case .success(let gifs):
-                    XCTAssertFalse(gifs.isEmpty, "Gifs array should not be empty on success")
-                case .failure(let error):
-                    XCTFail("Unexpected failure: \(error)")
-                }
-            })
-            .disposed(by: disposeBag)
-        expectation.fulfill()
-        wait(for: [expectation], timeout: 10.0)
-        
+        XCTAssertNotNil(idLabel)
+        XCTAssertEqual(idLabel.text, "ID")
+        XCTAssertEqual(idLabel.font, UIFont.systemFont(ofSize: 18, weight: .regular))
+        XCTAssertEqual(idLabel.textColor, UIColor.label)
+        XCTAssertTrue(idLabel.translatesAutoresizingMaskIntoConstraints == false)
     }
 }
-
