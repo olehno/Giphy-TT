@@ -11,7 +11,7 @@ import RxSwift
 class APIManager {
     
     static let shared = APIManager()
-
+    
     func encode(_ query: String) -> String? {
         return query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
     }
@@ -25,12 +25,12 @@ class APIManager {
     }
     
     func decodeGifsResponse(data: Data, observer: AnyObserver<Result<[Gif], Error>>) {
-            do {
-                let result = try JSONDecoder().decode(GifsResponse.self, from: data)
-                observer.onNext(.success(result.data))
-                observer.onCompleted()
-            } catch {
-                APICaller.shared.errorHandler(observer: observer)
-            }
+        do {
+            let result = try JSONDecoder().decode(GifsResponse.self, from: data)
+            observer.onNext(.success(result.data))
+            observer.onCompleted()
+        } catch {
+            APICaller.shared.errorHandler(observer: observer)
         }
+    }
 }
