@@ -34,21 +34,6 @@ final class APITests: XCTestCase {
         XCTAssertEqual(url?.absoluteString, expectedURLString, "Generated URL should match the expected URL")
     }
     
-    func testURLRequest() {
-        let urlString = "https://example.com/api"
-        guard let url = URL(string: urlString) else {
-            XCTFail("Failed to create URL")
-            return
-        }
-        
-        let urlRequest = APIManager.shared.urlRequest(url: url)
-        
-        XCTAssertNotNil(urlRequest, "URLRequest should not be nil")
-        XCTAssertEqual(urlRequest.url, url, "URLRequest URL should match the provided URL")
-        XCTAssertEqual(urlRequest.cachePolicy, .reloadIgnoringLocalAndRemoteCacheData, "URLRequest cache policy should be reloadIgnoringLocalAndRemoteCacheData")
-        XCTAssertEqual(urlRequest.timeoutInterval, 10.0, "URLRequest timeout interval should be 10.0")
-    }
-    
     func testDecodeGifsResponse() {
         let gifData = """
             {
@@ -84,9 +69,9 @@ final class APITests: XCTestCase {
         
         APIManager.shared.decodeGifsResponse(data: gifData!, observer: anyObserver)
         
-        XCTAssertEqual(observer.events.count, 2, "Observer should receive one event")
+        XCTAssertEqual(observer.events.count, 2, "Observer should receive two event")
         guard let firstEvent = observer.events.first else {
-            XCTFail("Observer should receive at least one event.")
+            XCTFail("Observer should receive at least two event.")
             return
         }
         

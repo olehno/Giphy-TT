@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		301771642B698ED80005EDA7 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301771632B698ED80005EDA7 /* APIManager.swift */; };
 		301771662B699A7E0005EDA7 /* APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301771652B699A7E0005EDA7 /* APITests.swift */; };
-		305738522B4B04C0002780B5 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305738512B4B04C0002780B5 /* test.swift */; };
+		305738522B4B04C0002780B5 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305738512B4B04C0002780B5 /* DetailViewControllerTests.swift */; };
 		307658F12B3CD7100047913A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307658F02B3CD7100047913A /* DetailViewController.swift */; };
 		308C5D2C2B3E928400DFAD21 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308C5D2B2B3E928400DFAD21 /* MainTabBarViewController.swift */; };
 		308C5D2E2B3E92C200DFAD21 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308C5D2D2B3E92C200DFAD21 /* FavoriteViewController.swift */; };
@@ -85,7 +85,7 @@
 		25AC32EE01C90031DBE2D5AD /* Pods-Giphy TTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Giphy TTTests.release.xcconfig"; path = "Target Support Files/Pods-Giphy TTTests/Pods-Giphy TTTests.release.xcconfig"; sourceTree = "<group>"; };
 		301771632B698ED80005EDA7 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		301771652B699A7E0005EDA7 /* APITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITests.swift; sourceTree = "<group>"; };
-		305738512B4B04C0002780B5 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		305738512B4B04C0002780B5 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		307658F02B3CD7100047913A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		308C5D2B2B3E928400DFAD21 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		308C5D2D2B3E92C200DFAD21 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 			children = (
 				301771652B699A7E0005EDA7 /* APITests.swift */,
 				30BBB2592B36512C002B4237 /* Giphy_TTTests.swift */,
-				305738512B4B04C0002780B5 /* test.swift */,
+				305738512B4B04C0002780B5 /* DetailViewControllerTests.swift */,
 				30C433822B62AF7500532A2B /* DetailViewTests.swift */,
 			);
 			path = "Giphy TTTests";
@@ -551,7 +551,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30BBB25A2B36512C002B4237 /* Giphy_TTTests.swift in Sources */,
-				305738522B4B04C0002780B5 /* test.swift in Sources */,
+				305738522B4B04C0002780B5 /* DetailViewControllerTests.swift in Sources */,
 				301771662B699A7E0005EDA7 /* APITests.swift in Sources */,
 				30C433832B62AF7500532A2B /* DetailViewTests.swift in Sources */,
 			);
