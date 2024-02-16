@@ -120,8 +120,8 @@ class DetailViewController: UIViewController {
             if let index = savedGifs.firstIndex(where: { $0.id == gif?.id }) {
                 savedGifs.remove(at: index)
             }
-            if let encodedData = try? JSONEncoder().encode(savedGifs) {
-                UserDefaults.standard.set(encodedData, forKey: "savedGifs")
+            if let encoded = try? JSONEncoder().encode(savedGifs) {
+                UserDefaults.standard.set(encoded, forKey: "savedGifs")
             }
             NotificationCenter.default.post(name: Notification.Name("SavedGifsUpdated"), object: nil)
             updateUI(isGifExistInArray: isGifExistInArray)
