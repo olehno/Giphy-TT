@@ -14,15 +14,15 @@ class MainTabBarViewController: UITabBarController {
     private let disposeBag = DisposeBag()
     
     private let blurEffectView: UIVisualEffectView = {
-            let blurEffect = UIBlurEffect(style: .extraLight)  // You can choose a different blur style here
-            let effectView = UIVisualEffectView(effect: blurEffect)
-            effectView.translatesAutoresizingMaskIntoConstraints = false
-            return effectView
-        }()
+        let blurEffect = UIBlurEffect(style: .extraLight)
+        let effectView = UIVisualEffectView(effect: blurEffect)
+        effectView.translatesAutoresizingMaskIntoConstraints = false
+        return effectView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         let vc1 = UINavigationController(rootViewController: SearchViewController())
         let vc2 = UINavigationController(rootViewController: FavoriteViewController())
         
@@ -31,7 +31,7 @@ class MainTabBarViewController: UITabBarController {
         
         vc1.title = "Search"
         vc2.title = "Favorite"
-
+        
         tabBar.tintColor = .label
         
         setViewControllers([vc1, vc2], animated: true)
@@ -48,19 +48,15 @@ class MainTabBarViewController: UITabBarController {
         NetworkMonitor.shared.isConnectedRelay.subscribe { isConnected in
             DispatchQueue.main.async {
                 if isConnected {
-                    
                     self.view.isUserInteractionEnabled = true
                     self.errorView.isHidden = true
                     self.blurEffectView.isHidden = true
-
                 } else {
                     self.view.isUserInteractionEnabled = false
                     self.errorView.isHidden = false
                     self.blurEffectView.isHidden = false
-
                 }
             }
-            
         }.disposed(by: disposeBag)
     }
 }

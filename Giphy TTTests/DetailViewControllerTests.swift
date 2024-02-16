@@ -19,7 +19,7 @@ class DetailViewControllerTests: XCTestCase {
         XCTAssertEqual(detailViewController.idLabel.text, "ID")
         XCTAssertEqual(detailViewController.titleLabel.text, "Title")
         XCTAssertEqual(detailViewController.publishDateLabel.text, "Publication Date")
-        }
+    }
     
     override func tearDown() {
         detailViewController = nil

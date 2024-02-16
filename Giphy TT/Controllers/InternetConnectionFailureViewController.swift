@@ -63,8 +63,8 @@ class InternetConnectionFailureViewController: UIViewController {
         applyConstraints()
         
         networkMonitor.isConnectedRelay.subscribe { [weak self] isConnected in
-                        self?.updateViewAppearance(isConnected: isConnected)
-
+            self?.updateViewAppearance(isConnected: isConnected)
+            
         }
         .disposed(by: disposeBag)
     }
