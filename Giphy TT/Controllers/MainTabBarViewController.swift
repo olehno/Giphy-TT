@@ -59,4 +59,13 @@ class MainTabBarViewController: UITabBarController {
             }
         }.disposed(by: disposeBag)
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate(alongsideTransition: { _ in
+            self.blurEffectView.frame = self.view.bounds
+            self.errorView.center = self.view.center
+        }, completion: nil)
+    }
 }
